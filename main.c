@@ -45,7 +45,7 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 	if (data)
 	{
 		pos_tmp = data->pos;
-		size_tmp = data->pos;
+		size_tmp = data->size;
 		free(data);
 		ioctl(0, TIOCGWINSZ, &s);
 		if (!(data = alloc_memory(data, s)))
@@ -91,7 +91,7 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 				i++;
 			}*/
 		}
-		data->column = get_column(data->column, argv, (s.ws_row - 2));
+		data = get_column(data, argv, (s.ws_row - 2));
 		if (check_column_size(data, s.ws_col))
 			print_columns(data, 0, 0, get_bigger(data));
 		else
