@@ -12,7 +12,7 @@
 
 #include "all.h"
 
-char		***get_column(char ***data, char **argv, int max_row)
+t_data		*get_column(t_data *data, char **argv, int max_row)
 {
 	int	i;
 	int i_2;
