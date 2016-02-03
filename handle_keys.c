@@ -12,8 +12,11 @@
 
 #include "all.h"
 
-int		**go_up(int **pos_tmp, struct winsize s, int i, int i_2)
+int		**go_up(int **pos_tmp, struct winsize s, int i, t_data *data)
 {
+	int	i_2;
+
+	i_2 = 0;
 	while (i < 256)
 	{
 		while (i_2 < s.ws_row)
@@ -24,10 +27,6 @@ int		**go_up(int **pos_tmp, struct winsize s, int i, int i_2)
 				{
 					if ((i - 1) >= 0 && (pos_tmp[i][i_2] = 1))
 						pos_tmp[i - 1][(s.ws_row - 3)] = 666;
-					else
-					{
-								
-					}
 				}
 				else
 				{
