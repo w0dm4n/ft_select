@@ -86,7 +86,7 @@ int			check_column_size(t_data *data, int max_column)
 	return ((size <= max_column) ? 1 : 0);
 }
 
-void		check_size_col(struct winsize size, char **argv)
+t_data		*check_size_col(struct winsize size, char **argv)
 {
 	t_data	*data;
 	int		i;
@@ -98,17 +98,22 @@ void		check_size_col(struct winsize size, char **argv)
 	column = 0;
 	data = NULL;
 	if (!(data = alloc_memory(data, size)))
-		return ;
+		return (NULL);
 	data->column = get_column(data->column, argv, (size.ws_row - 2));
 	if (check_column_size(data, size.ws_col))
-		print_columns(data, 0, 0, get_bigger(data));
+		return (data);
 	else
+	{
 		ft_putstr("Windows size is too small !\n");
+		exit(0);
+	}
+	return (NULL);
 }
 
-void		check_size(char **argv, struct winsize size)
+t_data		*check_size(char **argv, struct winsize size)
 {
-	int	i;
+	int		i;
+	t_data	*data;
 
 	i = 1;
 	if (check_argv_rows(argv, size.ws_row))
@@ -121,5 +126,10 @@ void		check_size(char **argv, struct winsize size)
 		}
 	}
 	else
-		check_size_col(size, argv);
+	{
+		if ((data = check_size_col(size, argv)) != NULL)
+			print_columns(data, 0, 0, get_bigger(data));
+		return (data);
+	}
+	return (NULL);
 }

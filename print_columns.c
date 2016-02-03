@@ -34,8 +34,8 @@ void		print_columns(t_data *data, int i, int i_2, int len_max)
 			column++;
 		while (data->column[column])
 		{
-			print_space(data->column[column][i], len_max);
 			ft_putstr(data->column[column][i]);
+			print_space(data->column[column][i], len_max);
 			column++;
 		}
 		column = 0;
