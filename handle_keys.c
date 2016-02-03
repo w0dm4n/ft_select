@@ -49,16 +49,10 @@ int		**go_down(int **pos_tmp, struct winsize s, int i, t_data *data)
 		{
 			if (pos_tmp[i][i_2] == 666)
 			{
-				if ((i_2 + 3) == s.ws_row)
-				{
-					pos_tmp[i][i_2] = 1;
+				if ((i_2 + 3) == s.ws_row && (pos_tmp[i][i_2] = 1))
 					pos_tmp[i + 1][0] = 666;
-				}
-				else
-				{
-					pos_tmp[i][i_2] = 1;
+				else if ((pos_tmp[i][i_2] = 1))
 					pos_tmp[i][i_2 + 1] = 666;
-				}
 				break ;
 			}
 			i_2++;
