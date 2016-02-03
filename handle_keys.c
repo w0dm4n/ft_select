@@ -47,8 +47,14 @@ int		**go_right(int **pos_tmp, struct winsize s, int i, t_data *data)
 			{
 				if (i == data->size)
 					break ;
-				pos_tmp[i][i_2] = 1;
-				pos_tmp[i + 1][i_2] = 666;
+				if ((i + 1) == data->size)
+					if (!data->column[i + 1][i_2])
+						break ;
+				else
+				{
+					pos_tmp[i][i_2] = 1;
+					pos_tmp[i + 1][i_2] = 666;
+				}
 				break ;
 			}
 			i_2++;
