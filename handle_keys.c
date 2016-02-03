@@ -18,8 +18,10 @@ int		**go_left(int **pos_tmp, struct winsize s, int i, int i_2)
 	{
 		while (i_2 < s.ws_row)
 		{
-			if (pos_tmp[i - 1][i_2] && i != 0)
+			if (pos_tmp[i][i_2] == 666)
 			{
+				if (i == 0)
+					break;
 				pos_tmp[i][i_2] = 1;
 				pos_tmp[i - 1][i_2] = 666;
 				break;
