@@ -12,6 +12,13 @@
 
 #include "all.h"
 
+int		**go_right(int **pos_tmp, struct winsize s, int i, t_data *data)
+{
+	int i_2;
+
+	i_2 = 0;
+}
+
 int		**go_up(int **pos_tmp, struct winsize s, int i, int i_2)
 {
 	while (i < 256)
