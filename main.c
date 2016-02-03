@@ -56,41 +56,7 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 		if (get_ascii_value(test) == ARROW_DOWN)
 			go_down(pos_tmp, s, 0, 0);
 		if (get_ascii_value(test) == ARROW_UP)
-		{
-			/*i = 0;
-			i_2 = 0;
-			
-			while (i < 256)
-			{
-				while (i_2 < s.ws_row)
-				{
-					if (pos_tmp[i][i_2] == 666)
-					{
-						if (i_2 == 0)
-						{
-							if ((i - 1) >= 0)
-							{
-								pos_tmp[i][i_2] = 1;
-								pos_tmp[i - 1][(s.ws_row - 3)] = 666;
-							}
-							else
-							{
-								
-							}
-						}
-						else
-						{
-							pos_tmp[i][i_2] = 1;
-							pos_tmp[i][i_2 - 1] = 666;
-						}
-						break ;
-					}
-					i_2++;
-				}
-				i_2 = 0;
-				i++;
-			}*/
-		}
+			go_up(pos_tmp, s, 0, 0);
 		data = get_column(data, argv, (s.ws_row - 2));
 		if (check_column_size(data, s.ws_col))
 			print_columns(data, 0, 0, get_bigger(data));
