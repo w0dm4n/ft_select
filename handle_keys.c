@@ -42,13 +42,16 @@ int		**go_down(int **pos_tmp, struct winsize s, int i, t_data *data)
 	int i_2;
 
 	i_2 = 0;
-	data = NULL;
 	while (i < COLUMNS_MAX_SIZE)
 	{
 		while (i_2 < s.ws_row)
 		{
 			if (pos_tmp[i][i_2] == 666)
 			{
+				if (i == data->size)
+				{
+					ft_putstr("bjr");
+				}
 				if ((i_2 + 3) == s.ws_row && (pos_tmp[i][i_2] = 1))
 					pos_tmp[i + 1][0] = 666;
 				else if ((pos_tmp[i][i_2] = 1))
