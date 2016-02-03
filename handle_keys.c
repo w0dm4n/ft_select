@@ -49,9 +49,8 @@ int		**go_down(int **pos_tmp, struct winsize s, int i, t_data *data)
 			if (pos_tmp[i][i_2] == 666)
 			{
 				if (i == data->size)
-				{
-					ft_putstr("bjr");
-				}
+					if (!data->column[i][i_2 + 1])
+						break ;
 				if ((i_2 + 3) == s.ws_row && (pos_tmp[i][i_2] = 1))
 					pos_tmp[i + 1][0] = 666;
 				else if ((pos_tmp[i][i_2] = 1))
