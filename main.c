@@ -57,7 +57,7 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 			go_down(pos_tmp, s, 0, 0);
 		if (get_ascii_value(test) == ARROW_UP)
 		{
-			i = 0;
+			/*i = 0;
 			i_2 = 0;
 			
 			while (i < 256)
@@ -89,7 +89,7 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 				}
 				i_2 = 0;
 				i++;
-			}
+			}*/
 		}
 		data->column = get_column(data->column, argv, (s.ws_row - 2));
 		if (check_column_size(data, s.ws_col))
