@@ -58,4 +58,5 @@ int			check_column_size(t_data *data, int max_column);
 t_data		*get_column(t_data *data, char **argv, int max_row);
 int			**go_down(int **pos_tmp, struct winsize s, int i, t_data *data);
 int			**go_up(int **pos_tmp, struct winsize s, int i, int i_2);
+int			**go_right(int **pos_tmp, struct winsize s, int i, t_data *data);
 #endif
