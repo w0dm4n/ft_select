@@ -41,6 +41,7 @@
 # define ARROW_DOWN 184
 # define ARROW_LEFT 186
 # define ARROW_RIGHT 185
+# define SELECTED "\e[1;37m\e[46m"
 
 typedef struct	s_data
 {
