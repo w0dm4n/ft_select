@@ -41,6 +41,7 @@ int		**go_up(int **pos_tmp, struct winsize s, int i, int i_2)
 		i_2 = 0;
 		i++;
 	}
+	return (pos_tmp);
 }
 
 int		**go_down(int **pos_tmp, struct winsize s, int i, int i_2)
