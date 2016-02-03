@@ -32,8 +32,7 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 	struct termios	bjr;
 	char			*test;
 	int				**pos_tmp;
-	int i = 0;
-	int i_2 = 0;
+	int				size_tmp;
 
 	test = ft_strnew(10);
 	tcgetattr(0, &bjr);
@@ -46,39 +45,15 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 	if (data)
 	{
 		pos_tmp = data->pos;
+		size_tmp = data->pos;
 		free(data);
 		ioctl(0, TIOCGWINSZ, &s);
 		if (!(data = alloc_memory(data, s)))
 			return ;
 		ft_putstr(CLEAR_SCREEN);
-
+		data->size = size_tmp;
 		if (get_ascii_value(test) == ARROW_DOWN)
-		{
-			
-			while (i < 256)
-			{
-				while (i_2 < s.ws_row)
-				{
-					if (pos_tmp[i][i_2] == 666)
-					{
-						if ((i_2 + 3) == s.ws_row)
-						{
-							pos_tmp[i][i_2] = 1;
-							pos_tmp[i + 1][0] = 666;
-						}
-						else
-						{
-							pos_tmp[i][i_2] = 1;
-							pos_tmp[i][i_2 + 1] = 666;
-						}
-						break ;
-					}
-					i_2++;
-				}
-				i_2 = 0;
-				i++;
-			}
-		}
+			go_down(pos_tmp)
 		if (get_ascii_value(test) == ARROW_UP)
 		{
 			i = 0;
