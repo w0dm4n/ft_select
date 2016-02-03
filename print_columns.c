@@ -29,7 +29,7 @@ void		print_columns(t_data *data, int i, int i_2, int len_max)
 	while (i != data->max_row)
 	{
 		if (data->pos[column][i] == 666)
-			ft_putstr("\e[4;36m");
+			ft_putstr(PRINT_CURSOR);
 		ft_putstr(data->column[column][i]);
 		if (data->pos[column][i] == 666)
 			ft_putstr(COLOR_CYAN);
@@ -39,7 +39,7 @@ void		print_columns(t_data *data, int i, int i_2, int len_max)
 		while (data->column[column])
 		{
 			if (data->pos[column][i] == 666)
-				ft_putstr("\e[4;36m");
+				ft_putstr(PRINT_CURSOR);
 			ft_putstr(data->column[column][i]);
 			if (data->pos[column][i] == 666)
 				ft_putstr(COLOR_CYAN);

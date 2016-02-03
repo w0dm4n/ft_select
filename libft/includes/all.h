@@ -36,6 +36,7 @@
 # define CLEAR_SCREEN "\033[2J"
 # define HIDE_CURSOR "\033[?25l"
 # define SHOW_CURSOR "\033[?25h"
+# define PRINT_CURSOR "\e[4;36m"
 # define ARROW_UP 183
 # define ARROW_DOWN 184
 # define ARROW_LEFT 186

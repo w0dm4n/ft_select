@@ -14,7 +14,7 @@
 
 int		get_ascii_value(char *value)
 {
-	int	i; 
+	int	i;
 	int	size;
 
 	i = 0;
