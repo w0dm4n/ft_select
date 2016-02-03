@@ -17,6 +17,7 @@ int		**go_up(int **pos_tmp, struct winsize s, int i, t_data *data)
 	int	i_2;
 
 	i_2 = 0;
+	data = NULL;
 	while (i < 256)
 	{
 		while (i_2 < s.ws_row)

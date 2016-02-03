@@ -53,11 +53,11 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 		ft_putstr(CLEAR_SCREEN);
 		data->size = size_tmp;
 		data->pos = pos_tmp;
+		data = get_column(data, argv, (s.ws_row - 2));
 		if (get_ascii_value(test) == ARROW_DOWN)
 			go_down(pos_tmp, s, 0, 0);
 		if (get_ascii_value(test) == ARROW_UP)
-			go_up(pos_tmp, s, 0, 0);
-		data = get_column(data, argv, (s.ws_row - 2));
+			go_up(pos_tmp, s, 0, data);
 		if (check_column_size(data, s.ws_col))
 			print_columns(data, 0, 0, get_bigger(data));
 		else
