@@ -28,13 +28,21 @@ void		print_columns(t_data *data, int i, int i_2, int len_max)
 	column = 0;
 	while (i != data->max_row)
 	{
+		if (data->pos[column][i] == 666)
+			ft_putstr("\e[4;36m");
 		ft_putstr(data->column[column][i]);
+		if (data->pos[column][i] == 666)
+			ft_putstr(COLOR_CYAN);
 		print_space(data->column[column][i], len_max);
 		if (!column)
 			column++;
 		while (data->column[column])
 		{
+			if (data->pos[column][i] == 666)
+				ft_putstr("\e[4;36m");
 			ft_putstr(data->column[column][i]);
+			if (data->pos[column][i] == 666)
+				ft_putstr(COLOR_CYAN);
 			print_space(data->column[column][i], len_max);
 			column++;
 		}

@@ -36,10 +36,15 @@
 # define CLEAR_SCREEN "\033[2J"
 # define HIDE_CURSOR "\033[?25l"
 # define SHOW_CURSOR "\033[?25h"
+# define ARROW_UP 183
+# define ARROW_DOWN 184
+# define ARROW_LEFT 186
+# define ARROW_RIGHT 185
 
 typedef struct	s_data
 {
 	char	***column;
+	int		**pos;
 	int		max_row;
 }				t_data;
 t_data		*check_size(char **argv, struct winsize size);
