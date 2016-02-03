@@ -14,7 +14,24 @@
 
 int		**go_left(int **pos_tmp, struct winsize s, int i, int i_2)
 {
-	
+	while (i < COLUMNS_MAX_SIZE)
+	{
+		while (i_2 < s.ws_row)
+		{
+			if (pos_tmp[i][i_2] && i != 0)
+			{
+				pos_tmp[i][i_2] = 1;
+				pos_tmp[i - 1][i_2] = 666;
+				break;
+			}
+			i_2++;
+		}
+		if (pos_tmp[i - 1][i_2] == 666)
+			break ;
+		i_2 = 0;
+		i++;
+	}
+	return (pos_tmp);
 }
 
 int		**go_right(int **pos_tmp, struct winsize s, int i, t_data *data)
