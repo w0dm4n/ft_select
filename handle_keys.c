@@ -12,6 +12,11 @@
 
 #include "all.h"
 
+int		**go_left(int **pos_tmp, struct winsize s, int i, int i_2)
+{
+	
+}
+
 int		**go_right(int **pos_tmp, struct winsize s, int i, t_data *data)
 {
 	int i_2;
