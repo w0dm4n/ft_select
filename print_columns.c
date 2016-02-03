@@ -12,6 +12,14 @@
 
 #include "all.h"
 
+void		print_color(int column, int i, t_data *data)
+{
+	if (data->pos[column][i] == 666)
+		ft_putstr(PRINT_CURSOR);
+	if (data->pos[column][i] == 999)
+		ft_putstr(PRINT_SELECTED);
+}
+
 void		print_space(char *str, int len_max)
 {
 	int	space;
@@ -28,21 +36,17 @@ void		print_columns(t_data *data, int i, int i_2, int len_max)
 	column = 0;
 	while (i != data->max_row)
 	{
-		if (data->pos[column][i] == 666)
-			ft_putstr(PRINT_CURSOR);
+		print_color(column, i, data);
 		ft_putstr(data->column[column][i]);
-		if (data->pos[column][i] == 666)
-			ft_putstr(COLOR_CYAN);
+		ft_putstr(COLOR_CYAN);
 		print_space(data->column[column][i], len_max);
 		if (!column)
 			column++;
 		while (data->column[column])
 		{
-			if (data->pos[column][i] == 666)
-				ft_putstr(PRINT_CURSOR);
+			print_color(column, i, data);
 			ft_putstr(data->column[column][i]);
-			if (data->pos[column][i] == 666)
-				ft_putstr(COLOR_CYAN);
+			ft_putstr(COLOR_CYAN);
 			print_space(data->column[column][i], len_max);
 			column++;
 		}

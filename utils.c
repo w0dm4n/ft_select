@@ -70,6 +70,7 @@ t_data		*alloc_memory(t_data *data, struct winsize size)
 	if (data->max_row < 0)
 		data->max_row = 0;
 	data->pos[0][0] = 666;
+	data->pos[1][0] = 999;
 	return (data);
 }
 

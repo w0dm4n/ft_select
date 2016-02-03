@@ -37,11 +37,11 @@
 # define HIDE_CURSOR "\033[?25l"
 # define SHOW_CURSOR "\033[?25h"
 # define PRINT_CURSOR "\e[4;36m"
+# define PRINT_SELECTED "\e[1;37m\e[46m"
 # define ARROW_UP 183
 # define ARROW_DOWN 184
 # define ARROW_LEFT 186
 # define ARROW_RIGHT 185
-# define SELECTED "\e[1;37m\e[46m"
 
 typedef struct	s_data
 {
