@@ -12,12 +12,11 @@
 
 #include "all.h"
 
-int		**go_up(int **pos_tmp, struct winsize s, int i, t_data *data)
+int		**go_up(int **pos_tmp, struct winsize s, int i, int i_2)
 {
 	int	i_2;
 
 	i_2 = 0;
-	data = NULL;
 	while (i < 256)
 	{
 		while (i_2 < s.ws_row)
@@ -29,11 +28,8 @@ int		**go_up(int **pos_tmp, struct winsize s, int i, t_data *data)
 					if ((i - 1) >= 0 && (pos_tmp[i][i_2] = 1))
 						pos_tmp[i - 1][(s.ws_row - 3)] = 666;
 				}
-				else
-				{
-					pos_tmp[i][i_2] = 1;
+				else if ((pos_tmp[i][i_2] = 1))
 					pos_tmp[i][i_2 - 1] = 666;
-				}
 				break ;
 			}
 			i_2++;
@@ -44,7 +40,7 @@ int		**go_up(int **pos_tmp, struct winsize s, int i, t_data *data)
 	return (pos_tmp);
 }
 
-int		**go_down(int **pos_tmp, struct winsize s, int i, int i_2)
+int		**go_down(int **pos_tmp, struct winsize s, int i, t_data *data)
 {
 	while (i < COLUMNS_MAX_SIZE)
 	{
