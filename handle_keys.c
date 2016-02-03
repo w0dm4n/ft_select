@@ -21,15 +21,13 @@ int		**go_left(int **pos_tmp, struct winsize s, int i, int i_2)
 			if (pos_tmp[i][i_2] == 666)
 			{
 				if (i == 0)
-					break;
+					break ;
 				pos_tmp[i][i_2] = 1;
 				pos_tmp[i - 1][i_2] = 666;
-				break;
+				break ;
 			}
 			i_2++;
 		}
-		if (pos_tmp[i - 1][i_2] == 666)
-			break ;
 		i_2 = 0;
 		i++;
 	}
