@@ -33,6 +33,7 @@ char		***get_column(char ***data, char **argv, int max_row)
 		i_2++;
 	}
 	data[column + 1] = NULL;
+	data->size = column;
 	return (data);
 }
 

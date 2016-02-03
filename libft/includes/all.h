@@ -46,6 +46,7 @@ typedef struct	s_data
 	char	***column;
 	int		**pos;
 	int		max_row;
+	int		size;
 }				t_data;
 t_data		*check_size(char **argv, struct winsize size);
 t_data		*alloc_memory(t_data *data, struct winsize size);
