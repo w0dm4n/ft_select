@@ -34,6 +34,7 @@ char		***get_column(char ***data, char **argv, int max_row)
 	}
 	data[column + 1] = NULL;
 	data->size = column;
+	bonjour
 	return (data);
 }
 
