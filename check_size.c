@@ -28,11 +28,11 @@ t_data		*get_column(t_data *data, char **argv, int max_row)
 			column++;
 			i_2 = 0;
 		}
-		data[column][i_2] = ft_strdup(argv[i]);
+		data->column[column][i_2] = ft_strdup(argv[i]);
 		i++;
 		i_2++;
 	}
-	data[column + 1] = NULL;
+	data->column[column + 1] = NULL;
 	data->size = column;
 	return (data);
 }
@@ -100,7 +100,7 @@ t_data		*check_size_col(struct winsize size, char **argv)
 	data = NULL;
 	if (!(data = alloc_memory(data, size)))
 		return (NULL);
-	data->column = get_column(data->column, argv, (size.ws_row - 2));
+	data = get_column(data, argv, (size.ws_row - 2));
 	if (check_column_size(data, size.ws_col))
 		return (data);
 	else

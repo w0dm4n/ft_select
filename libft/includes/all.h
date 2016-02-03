@@ -55,5 +55,5 @@ void		print_columns(t_data *data, int i, int i_2, int len_max);
 int			check_argv_rows(char **argv, int max_size);
 int			get_bigger(t_data *data);
 int			check_column_size(t_data *data, int max_column);
-char		***get_column(char ***data, char **argv, int max_row);
+t_data		*get_column(t_data *data, char **argv, int max_row);
 #endif
