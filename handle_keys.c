@@ -70,15 +70,37 @@ int		**go_up(int **pos_tmp, struct winsize s, int i, int i_2)
 	{
 		while (i_2 < s.ws_row)
 		{
-			if (pos_tmp[i][i_2] == 666)
+			if (pos_tmp[i][i_2] == 666 || pos_tmp[i][i_2] == 1000)
 			{
 				if (i_2 == 0)
 				{
-					if ((i - 1) >= 0 && (pos_tmp[i][i_2] = 1))
-						pos_tmp[i - 1][(s.ws_row - 3)] = 666;
+					if ((i - 1) >= 0)
+					{
+						if (pos_tmp[i - 1][i_2] != 999)
+						{
+							pos_tmp[i][i_2] = 1;
+							pos_tmp[i - 1][(s.ws_row - 3)] = 666;
+						}
+						else
+						{
+							pos_tmp[i][i_2] = 999;
+							pos_tmp[i - 1][(s.ws_row - 3)] = 1000;
+						}
+					}
 				}
-				else if ((pos_tmp[i][i_2] = 1))
-					pos_tmp[i][i_2 - 1] = 666;
+				else
+				{
+					if (pos_tmp[i][i_2 - 1] != 999)
+					{
+						pos_tmp[i][i_2] = 1;
+						pos_tmp[i][i_2 - 1] = 666;
+					}
+					else
+					{
+						pos_tmp[i][i_2] = 999;
+						pos_tmp[i][i_2 - 1] = 1000;
+					}
+				}
 				break ;
 			}
 			i_2++;

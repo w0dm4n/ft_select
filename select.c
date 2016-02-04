@@ -24,6 +24,14 @@ int		**set_selected(int **pos_tmp, struct winsize s, int i, int i_2)
 				pos_tmp[i][i_2 + 1] = 666;
 				break ;
 			}
+			if (pos_tmp[i][i_2] == 1000)
+			{
+				pos_tmp[i][i_2] = 1;
+				if (pos_tmp[i][i_2 + 1] == 999)
+					pos_tmp[i][i_2 + 1] = 1000;
+				else
+					pos_tmp[i][i_2 + 1] = 666;
+			}
 			i_2++;
 		}
 		i_2 = 0;
