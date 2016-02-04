@@ -119,6 +119,7 @@ t_data		*check_size(char **argv, struct winsize size)
 	i = 1;
 	if (check_argv_rows(argv, size.ws_row))
 	{
+		// NEED TO ALLOC ONLY ONE COL ECT AND RETURN DATA
 		while (argv[i])
 		{
 			ft_putstr(argv[i]);
