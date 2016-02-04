@@ -12,7 +12,7 @@
 
 NAME = ft_select
 
-SRCS_NAME = main.c check_size.c utils.c print_columns.c handle_keys.c
+SRCS_NAME = main.c check_size.c utils.c print_columns.c handle_keys.c select.c
 
 LIB_FOLDER = libft/
 
