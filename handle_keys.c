@@ -82,7 +82,10 @@ int		**go_up(int **pos_tmp, struct winsize s, int i, int i_2)
 								pos_tmp[i][i_2] = 1;
 							else
 								pos_tmp[i][i_2] = 999;
-							pos_tmp[i - 1][(s.ws_row - 3)] = 666;
+							if (pos_tmp[i - 1][i_2] == 1000)
+								pos_tmp[i - 1][(s.ws_row - 3)] = 999;
+							else
+								pos_tmp[i - 1][(s.ws_row - 3)] = 666;
 						}
 						else
 						{
