@@ -56,7 +56,7 @@ typedef struct	s_data
 }				t_data;
 
 t_data		*check_size(char **argv, struct winsize size);
-t_data		*alloc_memory(t_data *data, struct winsize size);
+t_data		*alloc_memory(t_data *data, struct winsize size, int null);
 char		***set_as_null(char ***array);
 void		print_columns(t_data *data, int i, int i_2, int len_max);
 int			check_argv_rows(char **argv, int max_size);

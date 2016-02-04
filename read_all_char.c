@@ -44,8 +44,7 @@ t_data	*delete_line_cursor(t_data *data, char *buf, struct winsize s, int **p)
 				if (p[i][i_2] == 666 || 
 					p[i][i_2] == 1000)
 				{
-					p[i][i_2] = 1;
-					data->column[i][i_2] = ft_strdup("adieu !");
+					p[i][i_2] = 404;
 					p[i][i_2 + 1] = 666;
 					break ;
 				}
@@ -62,19 +61,18 @@ t_data	*delete_line_cursor(t_data *data, char *buf, struct winsize s, int **p)
 
 t_data	*handle_if_multiple_column(t_data *data, struct winsize s, char *buffer, char **argv)
 {
-	/*int		**pos_tmp;
+	int		**pos_tmp;
 	int		size_tmp;
 
 	pos_tmp = data->pos;
-	size_tmp = data->size;*/
-	//free(data);
+	size_tmp = data->size;
+	free(data);
 	ioctl(0, TIOCGWINSZ, &s);
-	if (!(data = alloc_memory(data, s)))
+	if (!(data = alloc_memory(data, s, 0)))
 		return (NULL);
 	ft_putstr(CLEAR_SCREEN);
 	data->size = size_tmp;
 	data->pos = pos_tmp;
-	data->column = data_tmp;
 	data = get_column(data, argv, (s.ws_row - 2));
 	pos_tmp = handle_positions(pos_tmp, buffer, data, s);
 	data = delete_line_cursor(data, buffer, s, pos_tmp);
