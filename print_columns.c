@@ -49,7 +49,7 @@ void		print_columns(t_data *data, int i, int i_2, int len_max)
 			column++;
 		while (data->column[column])
 		{
-			//if (column != data->size)
+			//if (column != data->size) SEGV DE MERDE ICI
 			//{
 				if (ft_strlen(data->column[column][i]))
 				{
