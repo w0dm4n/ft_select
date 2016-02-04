@@ -44,6 +44,8 @@
 # define ARROW_LEFT 186
 # define ARROW_RIGHT 185
 # define SPACE 32
+# define DELETE 295
+# define BACKSPACE 127
 
 typedef struct	s_data
 {

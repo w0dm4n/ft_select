@@ -12,19 +12,31 @@
 
 #include "all.h"
 
-int		**handle_positions(int **pos_tmp, char *buffer, t_data *data, struct winsize s)
+int		**handle_positions(int **pos, char *b, t_data *data, struct winsize s)
 {
-	if (get_ascii_value(buffer) == ARROW_DOWN)
-		pos_tmp = go_down(pos_tmp, s, 0, data);
-	if (get_ascii_value(buffer) == ARROW_UP)
-		pos_tmp = go_up(pos_tmp, s, 0, 0);
-	if (get_ascii_value(buffer) == ARROW_RIGHT)
-		pos_tmp = go_right(pos_tmp, s, 0, data);
-	if (get_ascii_value(buffer) == ARROW_LEFT)
-		pos_tmp = go_left(pos_tmp, s, 0, 0);
-	if (get_ascii_value(buffer) == SPACE)
-		pos_tmp = set_selected(pos_tmp, s, 0, data);
-	return (pos_tmp);
+	if (get_ascii_value(b) == ARROW_DOWN)
+		pos = go_down(pos, s, 0, data);
+	if (get_ascii_value(b) == ARROW_UP)
+		pos = go_up(pos, s, 0, 0);
+	if (get_ascii_value(b) == ARROW_RIGHT)
+		pos = go_right(pos, s, 0, data);
+	if (get_ascii_value(b) == ARROW_LEFT)
+		pos = go_left(pos, s, 0, 0);
+	if (get_ascii_value(b) == SPACE)
+		pos = set_selected(pos, s, 0, data);
+	return (pos);
+}
+
+t_data	*delete_line_cursor(t_data *data, char *buffer)
+{
+	if (get_ascii_value(buffer) == DELETE
+		|| get_ascii_value(buffer) == BACKSPACE)
+	{
+		ft_putstr("DELETE MOI LE 666 ou le 1000 !");
+		return (data);
+	}
+	else
+		return (data);
 }
 
 t_data	*handle_if_multiple_column(t_data *data, struct winsize s, char *buffer, char **argv)
@@ -43,6 +55,7 @@ t_data	*handle_if_multiple_column(t_data *data, struct winsize s, char *buffer, 
 	data->pos = pos_tmp;
 	data = get_column(data, argv, (s.ws_row - 2));
 	pos_tmp = handle_positions(pos_tmp, buffer, data, s);
+	data = delete_line_cursor(data, buffer);
 	if (check_column_size(data, s.ws_col))
 		print_columns(data, 0, 0, get_bigger(data));
 	else
