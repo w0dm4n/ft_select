@@ -6,7 +6,7 @@
 #    By: frmarinh <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 08:34:59 by frmarinh          #+#    #+#              #
-#    Updated: 2016/02/04 04:49:07 by frmarinh         ###   ########.fr        #
+#    Updated: 2016/02/04 05:00:10 by frmarinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(NAME):
 	@make -C libft/ fclean
 	@make -C libft/
 	@gcc $(FLAGS) -I $(INCLUDE_FOLDER) -c $(SRCS_NAME)
-	@gcc -o $(NAME) $(O_NAME) -L $(LIB_FOLDER) -lft
+	@gcc -o $(NAME) -ltermcap $(O_NAME) -L $(LIB_FOLDER) -lft
 
 clean:
 	@rm -rf $(O_NAME)
