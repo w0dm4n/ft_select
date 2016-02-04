@@ -45,7 +45,7 @@ t_data	*delete_line_cursor(t_data *data, char *buf, struct winsize s, int **p)
 					p[i][i_2] == 1000)
 				{
 					p[i][i_2] = 1;
-					data->column[i][i_2] = ft_strdup("adieu !");
+					data->column[i][i_2] = "\0";
 					p[i][i_2 + 1] = 666;
 					break ;
 				}
