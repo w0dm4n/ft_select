@@ -49,8 +49,8 @@ void		print_columns(t_data *data, int i, int i_2, int len_max)
 			column++;
 		while (data->column[column])
 		{
-			if (column != data->size)
-			{
+			//if (column != data->size)
+			//{
 				if (ft_strlen(data->column[column][i]))
 				{
 					print_color(column, i, data);
@@ -58,7 +58,7 @@ void		print_columns(t_data *data, int i, int i_2, int len_max)
 					ft_putstr(COLOR_CYAN);
 					print_space(data->column[column][i], len_max);
 				}
-			}
+			//}
 			column++;
 		}
 		column = 0;
