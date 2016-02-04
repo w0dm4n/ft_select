@@ -52,6 +52,7 @@ typedef struct	s_data
 	int		max_row;
 	int		size;
 }				t_data;
+
 t_data		*check_size(char **argv, struct winsize size);
 t_data		*alloc_memory(t_data *data, struct winsize size);
 char		***set_as_null(char ***array);
@@ -65,4 +66,6 @@ int			**go_up(int **pos_tmp, struct winsize s, int i, int i_2);
 int			**go_right(int **pos_tmp, struct winsize s, int i, t_data *data);
 int			**go_left(int **pos_tmp, struct winsize s, int i, int i_2);
 int			**set_selected(int **pos_tmp, struct winsize s, int i, t_data *data);
+void		read_all_char(char **argv, t_data *data, struct winsize s);
+int			get_ascii_value(char *value);
 #endif

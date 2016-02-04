@@ -106,7 +106,7 @@ t_data		*check_size_col(struct winsize size, char **argv)
 	else
 	{
 		ft_putstr("Windows size is too small !\n");
-		exit(0);
+		read_all_char(argv, data, size);
 	}
 	return (NULL);
 }

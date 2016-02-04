@@ -7,8 +7,8 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 00:56:39 by frmarinh          #+#    #+#             */
 /*   Updated: 2016/02/03 00:56:50 by frmarinh         ###   ########.fr       */
-/*                                                                            */
 /* ************************************************************************** */
+/*                                                                            */
 
 #include "all.h"
 
@@ -82,3 +82,19 @@ int			check_argv_rows(char **argv, int max_size)
 		i++;
 	return ((i < max_size) ? 1 : 0);
 }
+
+int		get_ascii_value(char *value)
+{
+	int	i;
+	int	size;
+
+	i = 0;
+	size = 0;
+	while (value[i])
+	{
+		size += value[i];
+		i++;
+	}
+	return (size);
+}
+
