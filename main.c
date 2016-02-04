@@ -63,7 +63,7 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 		if (get_ascii_value(test) == ARROW_LEFT)
 			pos_tmp = go_left(pos_tmp, s, 0, 0);
 		if (get_ascii_value(test) == SPACE)
-			pos_tmp = set_selected(pos_tmp, s, 0, 0);
+			pos_tmp = set_selected(pos_tmp, s, 0, data);
 		if (check_column_size(data, s.ws_col))
 			print_columns(data, 0, 0, get_bigger(data));
 		else

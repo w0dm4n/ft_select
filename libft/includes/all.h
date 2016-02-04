@@ -64,5 +64,5 @@ int			**go_down(int **pos_tmp, struct winsize s, int i, t_data *data);
 int			**go_up(int **pos_tmp, struct winsize s, int i, int i_2);
 int			**go_right(int **pos_tmp, struct winsize s, int i, t_data *data);
 int			**go_left(int **pos_tmp, struct winsize s, int i, int i_2);
-int			**set_selected(int **pos_tmp, struct winsize s, int i, int i_2);
+int			**set_selected(int **pos_tmp, struct winsize s, int i, t_data *data);
 #endif
