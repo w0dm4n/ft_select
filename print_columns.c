@@ -18,6 +18,8 @@ void		print_color(int column, int i, t_data *data)
 		ft_putstr(PRINT_CURSOR);
 	if (data->pos[column][i] == 999)
 		ft_putstr(PRINT_SELECTED);
+	if (data->pos[column][i] == 1000)
+		ft_putstr(PRINT_SELECTED_CURSOR);
 }
 
 void		print_space(char *str, int len_max)
