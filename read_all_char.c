@@ -86,6 +86,7 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 	bjr.c_lflag &= ~ICANON;
 	bjr.c_lflag &= ~ECHO;
 	tcsetattr(STDIN_FILENO, TCSANOW, &bjr);
+	data = sig_handler(data);
 	read(0, buffer, 10);
 	if (get_ascii_value(buffer) == ESC)
 	{
