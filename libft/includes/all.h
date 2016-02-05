@@ -49,6 +49,8 @@
 # define CURSOR_ONLY 666
 # define CURSOR_N_SELECTED 1000
 # define SELECTED_ONLY 999
+# define ESC 27
+# define RETURN 10
 
 typedef struct	s_data
 {

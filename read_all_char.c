@@ -27,6 +27,31 @@ int		**handle_positions(int **pos, char *b, t_data *data, struct winsize s)
 	return (pos);
 }
 
+void	get_return_and_exit(t_data *data, struct winsize s)
+{
+	int	i;
+	int i_2;
+
+	i = 0;
+	i_2 = 0;
+	while (i < COLUMNS_MAX_SIZE)
+	{
+		while (i_2 < s.ws_row)
+		{
+			if (data->pos[i][i_2] == SELECTED_ONLY
+				|| data->pos[i][i_2] == CURSOR_N_SELECTED)
+			{
+				ft_putstr(data->column[i][i_2]);
+				ft_putstr(" ");
+			}
+			i_2++;
+		}
+		i_2 = 0;
+		i++;
+	}
+	exit (0);
+}
+
 /*t_data	*delete_line_cursor(t_data *data, char *buf, struct winsize s, int **p)
 {
 	int	i;
@@ -99,11 +124,10 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 	bjr.c_lflag &= ~ECHO;
 	tcsetattr(STDIN_FILENO, TCSANOW, &bjr);
 	read(0, buffer, 10);
-	if (get_ascii_value(buffer) == 27)
+	if (get_ascii_value(buffer) == ESC)
 		exit(0);
-	if (data->size != 1)
-		data = handle_if_multiple_column(data, s, buffer, argv);
-	else
-		ft_putstr("only one column !");
+	if (get_ascii_value(buffer) == RETURN)
+		get_return_and_exit(data, s);
+	data = handle_if_multiple_column(data, s, buffer, argv);
 	read_all_char(argv, data, s);
 }

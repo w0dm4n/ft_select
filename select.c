@@ -14,22 +14,22 @@
 
 int		**set_value(int **pos_tmp, int i, int i_2)
 {
-	if (pos_tmp[i][i_2 + 1] == 999)
-		pos_tmp[i][i_2 + 1] = 1000;
+	if (pos_tmp[i][i_2 + 1] == SELECTED_ONLY)
+		pos_tmp[i][i_2 + 1] = CURSOR_N_SELECTED;
 	else
-		pos_tmp[i][i_2 + 1] = 666;
+		pos_tmp[i][i_2 + 1] = CURSOR_ONLY;
 	return (pos_tmp);
 }
 
 int		**if_is_only_cursor(int **pos_tmp, int i, int i_2, t_data *data)
 {
-	pos_tmp[i][i_2] = 999;
+	pos_tmp[i][i_2] = SELECTED_ONLY;
 	if (data->column[i][i_2 + 1])
 		pos_tmp = set_value(pos_tmp, i, i_2);
 	else if (i == data->size)
-		pos_tmp[i][i_2] = 1000;
+		pos_tmp[i][i_2] = CURSOR_N_SELECTED;
 	else if (data->column[i + 1][0])
-		pos_tmp[i + 1][0] = 666;
+		pos_tmp[i + 1][0] = CURSOR_ONLY;
 	return (pos_tmp);
 }
 
@@ -39,9 +39,9 @@ int		**if_is_selected_n_cursor(int **pos_tmp, int i, int i_2, t_data *data)
 	if (data->column[i][i_2 + 1])
 		pos_tmp = set_value(pos_tmp, i, i_2);
 	else if (i == data->size)
-		pos_tmp[i][i_2] = 666;
+		pos_tmp[i][i_2] = CURSOR_ONLY;
 	else if (data->column[i + 1][0])
-		pos_tmp[i + 1][0] = 666;
+		pos_tmp[i + 1][0] = CURSOR_ONLY;
 	return (pos_tmp);
 }
 
@@ -54,12 +54,12 @@ int		**set_selected(int **pos_tmp, struct winsize s, int i, t_data *data)
 	{
 		while (i_2 < s.ws_row)
 		{
-			if (pos_tmp[i][i_2] == 666)
+			if (pos_tmp[i][i_2] == CURSOR_ONLY)
 			{
 				pos_tmp = if_is_only_cursor(pos_tmp, i, i_2, data);
 				break ;
 			}
-			else if (pos_tmp[i][i_2] == 1000)
+			else if (pos_tmp[i][i_2] == CURSOR_N_SELECTED)
 			{
 				pos_tmp = if_is_selected_n_cursor(pos_tmp, i, i_2, data);
 				break ;
