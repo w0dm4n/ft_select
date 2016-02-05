@@ -33,7 +33,7 @@ static int		**change_value_cursor(int **pos_tmp, int i, int i_2, int size)
 	return (pos_tmp);
 }
 
-static int		**change_value_selected_n_cursor(int **pos_tmp, int i, int i_2, int size)
+static int		**change_value_s_n_c(int **pos_tmp, int i, int i_2, int size)
 {
 	if ((i_2 + 3) == size)
 	{
@@ -76,13 +76,12 @@ int				**go_down(int **pos_tmp, struct winsize s, int i, t_data *data)
 				if (i == data->size)
 					if (!data->column[i][i_2 + 1])
 						break ;
-				pos_tmp = change_value_selected_n_cursor(pos_tmp, i, i_2, s.ws_row);
+				pos_tmp = change_value_s_n_c(pos_tmp, i, i_2, s.ws_row);
 				break ;
 			}
-			i_2++;
+			(pos_tmp[i][i_2] == CURSOR_ONLY || pos_tmp[i][i_2] == CURSOR_N_SELECTED) ? (return (pos_tmp)) : i_2++;
 		}
 		i_2 = 0;
 		i++;
 	}
-	return (pos_tmp);
 }

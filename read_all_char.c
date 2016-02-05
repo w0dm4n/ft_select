@@ -49,43 +49,10 @@ void	get_return_and_exit(t_data *data, struct winsize s)
 		i_2 = 0;
 		i++;
 	}
-	exit (0);
+	exit(0);
 }
 
-/*t_data	*delete_line_cursor(t_data *data, char *buf, struct winsize s, int **p)
-{
-	int	i;
-	int i_2;
-
-	i = 0;
-	i_2 = 0;
-	if (get_ascii_value(buf) == DELETE
-		|| get_ascii_value(buf) == BACKSPACE)
-	{
-		while (i < COLUMNS_MAX_SIZE)
-		{
-			while (i_2 < s.ws_row)
-			{
-				if (p[i][i_2] == 666 || 
-					p[i][i_2] == 1000)
-				{
-					p[i][i_2] = 1;
-					data->column[i][i_2] = "\0";
-					p[i][i_2 + 1] = 666;
-					break ;
-				}
-				i_2++;
-			}
-			i_2 = 0;
-			i++;
-		}
-		return (data);
-	}
-	else
-		return (data);
-}*/
-
-t_data	*handle_if_multiple_column(t_data *data, struct winsize s, char *buffer, char **argv)
+t_data	*handle_col(t_data *data, struct winsize s, char *buffer, char **argv)
 {
 	int		**pos_tmp;
 	int		size_tmp;
@@ -94,15 +61,13 @@ t_data	*handle_if_multiple_column(t_data *data, struct winsize s, char *buffer, 
 	size_tmp = data->size;
 	free(data);
 	ioctl(0, TIOCGWINSZ, &s);
-	if (!(data = alloc_memory(data, s, 0)))
+	if (!(data = alloc_memory(data, s)))
 		return (NULL);
 	ft_putstr(CLEAR_SCREEN);
 	data->size = size_tmp;
 	data->pos = pos_tmp;
-	// update ARGV FOR HANDLE deletion and set as \0 when its needed (argv = update_argv(data->column, argv))
 	data = get_column(data, argv, (s.ws_row - 2));
 	pos_tmp = handle_positions(pos_tmp, buffer, data, s);
-	//data = delete_line_cursor(data, buffer, s, pos_tmp);
 	if (check_column_size(data, s.ws_col))
 		print_columns(data, 0, 0, get_bigger(data));
 	else
@@ -125,6 +90,6 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 		exit(0);
 	if (get_ascii_value(buffer) == RETURN)
 		get_return_and_exit(data, s);
-	data = handle_if_multiple_column(data, s, buffer, argv);
+	data = handle_col(data, s, buffer, argv);
 	read_all_char(argv, data, s);
 }

@@ -12,7 +12,7 @@
 
 #include "all.h"
 
-static int		**change_value_selected_n_cursor(int **pos_tmp, int i, int i_2, int size)
+static int		**change_value_s_n_c(int **pos_tmp, int i, int i_2, int size)
 {
 	if (!i && !i_2)
 		return (pos_tmp);
@@ -71,7 +71,7 @@ int				**go_up(int **pos_tmp, struct winsize s, int i, int i_2)
 			}
 			else if (pos_tmp[i][i_2] == CURSOR_N_SELECTED)
 			{
-				pos_tmp = change_value_selected_n_cursor(pos_tmp, i, i_2, s.ws_row);
+				pos_tmp = change_value_s_n_c(pos_tmp, i, i_2, s.ws_row);
 				break ;
 			}
 			i_2++;

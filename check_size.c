@@ -98,7 +98,7 @@ t_data		*check_size_col(struct winsize size, char **argv)
 	i_2 = 0;
 	column = 0;
 	data = NULL;
-	if (!(data = alloc_memory(data, size, 1)))
+	if (!(data = alloc_memory(data, size)))
 		return (NULL);
 	data = get_column(data, argv, (size.ws_row - 2));
 	if (check_column_size(data, size.ws_col))

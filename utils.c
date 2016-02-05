@@ -44,7 +44,7 @@ int			**ft_set_zero(int **array, int all_col, int row_size)
 	return (array);
 }
 
-t_data		*alloc_memory(t_data *data, struct winsize size, int null)
+t_data		*alloc_memory(t_data *data, struct winsize size)
 {
 	int	i;
 
@@ -55,8 +55,7 @@ t_data		*alloc_memory(t_data *data, struct winsize size, int null)
 		return (NULL);
 	if (!(data->pos = malloc(sizeof(int**) * COLUMNS_MAX_SIZE)))
 		return (NULL);
-	if (null)
-		data->column = set_as_null(data->column);
+	data->column = set_as_null(data->column);
 	while (i <= COLUMNS_MAX_SIZE)
 	{
 		if (!(data->column[i] = malloc(sizeof(char*) * (size.ws_row + 64))))
@@ -66,8 +65,7 @@ t_data		*alloc_memory(t_data *data, struct winsize size, int null)
 		i++;
 	}
 	data->pos = ft_set_zero(data->pos, COLUMNS_MAX_SIZE, (size.ws_row + 64));
-	if (null)
-		data->column[0] = ft_set_null(data->column[0]);
+	data->column[0] = ft_set_null(data->column[0]);
 	data->max_row = (size.ws_row - 3);
 	if (data->max_row < 0)
 		data->max_row = 0;
