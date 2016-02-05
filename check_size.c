@@ -113,25 +113,9 @@ t_data		*check_size_col(struct winsize size, char **argv)
 
 t_data		*check_size(char **argv, struct winsize size)
 {
-	int		i;
 	t_data	*data;
 
-	i = 1;
-	if (check_argv_rows(argv, size.ws_row))
-	{
-		// NEED TO ALLOC ONLY ONE COL ECT AND RETURN DATA
-		while (argv[i])
-		{
-			ft_putstr(argv[i]);
-			ft_putstr("\n");
-			i++;
-		}
-	}
-	else
-	{
-		if ((data = check_size_col(size, argv)) != NULL)
-			print_columns(data, 0, 0, get_bigger(data));
-		return (data);
-	}
-	return (NULL);
+	if ((data = check_size_col(size, argv)) != NULL)
+		print_columns(data, 0, 0, get_bigger(data));
+	return (data);
 }
