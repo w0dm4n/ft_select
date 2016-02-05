@@ -15,7 +15,7 @@
 int		**handle_positions(int **pos, char *b, t_data *data, struct winsize s)
 {
 	if (get_ascii_value(b) == ARROW_DOWN)
-		pos = go_down(pos, s, 0, data);
+		pos = go_down(pos, s, -1, data);
 	if (get_ascii_value(b) == ARROW_UP)
 		pos = go_up(pos, s, 0, 0);
 	if (get_ascii_value(b) == ARROW_RIGHT)

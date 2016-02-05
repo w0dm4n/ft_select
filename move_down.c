@@ -58,30 +58,27 @@ int				**go_down(int **pos_tmp, struct winsize s, int i, t_data *data)
 {
 	int i_2;
 
-	i_2 = 0;
-	while (i < COLUMNS_MAX_SIZE)
+	i_2 = -1;
+	while (i++ < COLUMNS_MAX_SIZE)
 	{
-		while (i_2 < s.ws_row)
+		while (i_2++ < s.ws_row)
 		{
 			if (pos_tmp[i][i_2] == CURSOR_ONLY)
 			{
-				if (i == data->size)
-					if (!data->column[i][i_2 + 1])
-						break ;
+				if (i == data->size && !data->column[i][i_2 + 1])
+					break ;
 				pos_tmp = change_value_cursor(pos_tmp, i, i_2, s.ws_row);
 				break ;
 			}
 			else if (pos_tmp[i][i_2] == CURSOR_N_SELECTED)
 			{
-				if (i == data->size)
-					if (!data->column[i][i_2 + 1])
-						break ;
+				if (i == data->size && !data->column[i][i_2 + 1])
+					break ;
 				pos_tmp = change_value_s_n_c(pos_tmp, i, i_2, s.ws_row);
 				break ;
 			}
-			(pos_tmp[i][i_2] == CURSOR_ONLY || pos_tmp[i][i_2] == CURSOR_N_SELECTED) ? (return (pos_tmp)) : i_2++;
 		}
-		i_2 = 0;
-		i++;
+		i_2 = -1;
 	}
+	return (pos_tmp);
 }
