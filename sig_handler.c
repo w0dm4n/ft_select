@@ -24,14 +24,11 @@ void		exit_program(int signo)
 void		re_size_column(int signo)
 {
 	if (signo == SIGWINCH)
-	{
-		ft_putstr("RESIZE");
-	}
+		g_resize_window = 1;
 }
 
-t_data		*sig_handler(t_data *data)
+void		sig_handler(void)
 {
 	signal(SIGINT, exit_program);
 	signal(SIGWINCH, re_size_column);
-	return (data);
 }

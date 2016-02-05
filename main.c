@@ -22,11 +22,20 @@ int		main(int argc, char **argv, char **env)
 		return (0);
 	else
 	{
-		ft_putstr(COLOR_CYAN);
-		ft_putstr(HIDE_CURSOR);
-		ioctl(0, TIOCGWINSZ, &s);
-		data = check_size(argv, s);
-		read_all_char(argv, data, s);
+		while (1)
+		{
+			sig_handler();
+			if (g_resize_window == 1)
+			{
+				ft_putstr("RESIZE");
+				g_resize_window = 0;
+			}
+			ft_putstr(COLOR_CYAN);
+			ft_putstr(HIDE_CURSOR);
+			ioctl(0, TIOCGWINSZ, &s);
+			data = check_size(argv, s);
+			read_all_char(argv, data, s);
+		}
 	}
 	return (0);
 }

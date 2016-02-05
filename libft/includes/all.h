@@ -75,5 +75,6 @@ int			**go_left(int **pos_tmp, struct winsize s, int i, int i_2);
 int			**set_selected(int **pos_tmp, struct winsize s, int i, t_data *data);
 void		read_all_char(char **argv, t_data *data, struct winsize s);
 int			get_ascii_value(char *value);
-t_data		*sig_handler(t_data *data);
+void		sig_handler(void);
+int			g_resize_window;
 #endif
