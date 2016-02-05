@@ -49,6 +49,7 @@ void	get_return_and_exit(t_data *data, struct winsize s)
 		i_2 = 0;
 		i++;
 	}
+	ft_putstr(SHOW_CURSOR);
 	exit(0);
 }
 
@@ -87,7 +88,10 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 	tcsetattr(STDIN_FILENO, TCSANOW, &bjr);
 	read(0, buffer, 10);
 	if (get_ascii_value(buffer) == ESC)
+	{
+		ft_putstr(SHOW_CURSOR);
 		exit(0);
+	}
 	if (get_ascii_value(buffer) == RETURN)
 		get_return_and_exit(data, s);
 	data = handle_col(data, s, buffer, argv);

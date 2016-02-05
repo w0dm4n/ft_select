@@ -23,6 +23,7 @@ int		main(int argc, char **argv, char **env)
 	else
 	{
 		ft_putstr(COLOR_CYAN);
+		ft_putstr(HIDE_CURSOR);
 		ioctl(0, TIOCGWINSZ, &s);
 		data = check_size(argv, s);
 		read_all_char(argv, data, s);
