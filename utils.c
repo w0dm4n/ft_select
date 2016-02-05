@@ -71,7 +71,7 @@ t_data		*alloc_memory(t_data *data, struct winsize size, int null)
 	data->max_row = (size.ws_row - 3);
 	if (data->max_row < 0)
 		data->max_row = 0;
-	data->pos[0][0] = 666;
+	data->pos[0][0] = CURSOR_ONLY;
 	return (data);
 }
 

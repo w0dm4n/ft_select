@@ -14,11 +14,11 @@
 
 void		print_color(int column, int i, t_data *data)
 {
-	if (data->pos[column][i] == 666)
+	if (data->pos[column][i] == CURSOR_ONLY)
 		ft_putstr(PRINT_CURSOR);
-	if (data->pos[column][i] == 999)
+	if (data->pos[column][i] == SELECTED_ONLY)
 		ft_putstr(PRINT_SELECTED);
-	if (data->pos[column][i] == 1000)
+	if (data->pos[column][i] == CURSOR_N_SELECTED)
 		ft_putstr(PRINT_SELECTED_CURSOR);
 }
 

@@ -27,7 +27,7 @@ int		**handle_positions(int **pos, char *b, t_data *data, struct winsize s)
 	return (pos);
 }
 
-t_data	*delete_line_cursor(t_data *data, char *buf, struct winsize s, int **p)
+/*t_data	*delete_line_cursor(t_data *data, char *buf, struct winsize s, int **p)
 {
 	int	i;
 	int i_2;
@@ -58,7 +58,7 @@ t_data	*delete_line_cursor(t_data *data, char *buf, struct winsize s, int **p)
 	}
 	else
 		return (data);
-}
+}*/
 
 t_data	*handle_if_multiple_column(t_data *data, struct winsize s, char *buffer, char **argv)
 {
@@ -80,7 +80,7 @@ t_data	*handle_if_multiple_column(t_data *data, struct winsize s, char *buffer, 
 	// update ARGV FOR HANDLE deletion and set as \0 when its needed (argv = update_argv(data->column, argv))
 	data = get_column(data, argv, (s.ws_row - 2));
 	pos_tmp = handle_positions(pos_tmp, buffer, data, s);
-	data = delete_line_cursor(data, buffer, s, pos_tmp);
+	//data = delete_line_cursor(data, buffer, s, pos_tmp);
 	if (check_column_size(data, s.ws_col))
 		print_columns(data, 0, 0, get_bigger(data));
 	else

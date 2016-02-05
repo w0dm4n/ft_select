@@ -46,6 +46,9 @@
 # define SPACE 32
 # define DELETE 295
 # define BACKSPACE 127
+# define CURSOR_ONLY 666
+# define CURSOR_N_SELECTED 1000
+# define SELECTED_ONLY 999
 
 typedef struct	s_data
 {
