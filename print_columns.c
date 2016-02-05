@@ -38,27 +38,18 @@ void		print_columns(t_data *data, int i, int i_2, int len_max)
 	column = 0;
 	while (i != data->max_row)
 	{
-		//if (ft_strlen(data->column[column][i]))
-		//{
-			print_color(column, i, data);
-			ft_putstr(data->column[column][i]);
-			ft_putstr(COLOR_CYAN);
-			print_space(data->column[column][i], len_max);
-		//}
+		print_color(column, i, data);
+		ft_putstr(data->column[column][i]);
+		ft_putstr(COLOR_CYAN);
+		print_space(data->column[column][i], len_max);
 		if (!column)
 			column++;
 		while (data->column[column])
 		{
-			//if (column != data->size) SEGV DE MERDE ICI
-			//{
-				//if (ft_strlen(data->column[column][i]))
-				//{
-					print_color(column, i, data);
-					ft_putstr(data->column[column][i]);
-					ft_putstr(COLOR_CYAN);
-					print_space(data->column[column][i], len_max);
-				//}
-			//}
+			print_color(column, i, data);
+			ft_putstr(data->column[column][i]);
+			ft_putstr(COLOR_CYAN);
+			print_space(data->column[column][i], len_max);
 			column++;
 		}
 		column = 0;

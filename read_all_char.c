@@ -89,11 +89,9 @@ t_data	*handle_if_multiple_column(t_data *data, struct winsize s, char *buffer, 
 {
 	int		**pos_tmp;
 	int		size_tmp;
-	//char	***data_tmp;
 
 	pos_tmp = data->pos;
 	size_tmp = data->size;
-	//data_tmp = data->column;
 	free(data);
 	ioctl(0, TIOCGWINSZ, &s);
 	if (!(data = alloc_memory(data, s, 0)))
@@ -101,7 +99,6 @@ t_data	*handle_if_multiple_column(t_data *data, struct winsize s, char *buffer, 
 	ft_putstr(CLEAR_SCREEN);
 	data->size = size_tmp;
 	data->pos = pos_tmp;
-	//data->column = data_tmp;
 	// update ARGV FOR HANDLE deletion and set as \0 when its needed (argv = update_argv(data->column, argv))
 	data = get_column(data, argv, (s.ws_row - 2));
 	pos_tmp = handle_positions(pos_tmp, buffer, data, s);
