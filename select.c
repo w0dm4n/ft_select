@@ -39,7 +39,7 @@ int		**if_is_selected_n_cursor(int **pos_tmp, int i, int i_2, t_data *data)
 	if (data->column[i][i_2 + 1])
 		pos_tmp = set_value(pos_tmp, i, i_2);
 	else if (i == data->size)
-		pos_tmp[i][i_2] = 1000;
+		pos_tmp[i][i_2] = 666;
 	else if (data->column[i + 1][0])
 		pos_tmp[i + 1][0] = 666;
 	return (pos_tmp);
