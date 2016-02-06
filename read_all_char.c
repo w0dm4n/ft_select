@@ -53,6 +53,34 @@ void	get_return_and_exit(t_data *data, struct winsize s)
 	exit(0);
 }
 
+void	update_argv(t_data *data, char **argv)
+{
+	int	i;
+	int i_2;
+
+	data = NULL;
+	i = 0;
+	i_2 = 0;
+	while (i < COLUMNS_MAX_SIZE)
+	{
+		while (i_2 < s.ws_row)
+		{
+			if (pos_tmp[i][i_2] == CURSOR_ONLY ||
+				pos_tmp[i][i_2] == CURSOR_N_SELECTED)
+			{
+				while (*argv)
+				{
+					*argv = ft_strdup("deleted");
+					argv++;
+				}
+			}
+			i_2++;
+		}
+		i_2 = 0;
+		i++;
+	}
+}
+
 t_data	*handle_col(t_data *data, struct winsize s, char *buffer, char **argv)
 {
 	int		**pos_tmp;
@@ -67,6 +95,9 @@ t_data	*handle_col(t_data *data, struct winsize s, char *buffer, char **argv)
 	ft_putstr(CLEAR_SCREEN);
 	data->size = size_tmp;
 	data->pos = pos_tmp;
+	if (get_ascii_value(buffer) == DELETE ||
+		get_ascii_value(buffer) == BACKSPACE)
+		update_argv(data, argv);
 	data = get_column(data, argv, (s.ws_row - 2));
 	pos_tmp = handle_positions(pos_tmp, buffer, data, s);
 	if (check_column_size(data, s.ws_col))
