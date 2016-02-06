@@ -53,25 +53,41 @@ void	get_return_and_exit(t_data *data, struct winsize s)
 	exit(0);
 }
 
-void	update_argv(t_data *data, char **argv)
+t_data	*update_argv(t_data *data, char **argv, struct winsize s)
 {
 	int	i;
 	int i_2;
+	int i_3;
+	int column;
 
-	data = NULL;
 	i = 0;
 	i_2 = 0;
+	i_3 = 0;
+	column = 0;
 	while (i < COLUMNS_MAX_SIZE)
 	{
 		while (i_2 < s.ws_row)
 		{
-			if (pos_tmp[i][i_2] == CURSOR_ONLY ||
-				pos_tmp[i][i_2] == CURSOR_N_SELECTED)
+			if (data->pos[i][i_2] == CURSOR_ONLY ||
+				data->pos[i][i_2] == CURSOR_N_SELECTED)
 			{
 				while (*argv)
 				{
-					*argv = ft_strdup("deleted");
+					if (i_2 >= (s.ws_row - 2))
+					{
+						column++;
+						i_3 = 0;
+					}
+					if (data->pos[column][i_3] == CURSOR_ONLY ||
+						data->pos[column][i_3] == CURSOR_N_SELECTED)
+					{
+						ft_putstr("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+						*argv = ft_strdup("deleted");
+						data->pos[i][i_2] = 1;
+						data->pos[i][i_2 - 1] = CURSOR_ONLY;
+					}
 					argv++;
+					i_3++;
 				}
 			}
 			i_2++;
@@ -79,6 +95,7 @@ void	update_argv(t_data *data, char **argv)
 		i_2 = 0;
 		i++;
 	}
+	return (data);
 }
 
 t_data	*handle_col(t_data *data, struct winsize s, char *buffer, char **argv)
@@ -97,7 +114,7 @@ t_data	*handle_col(t_data *data, struct winsize s, char *buffer, char **argv)
 	data->pos = pos_tmp;
 	if (get_ascii_value(buffer) == DELETE ||
 		get_ascii_value(buffer) == BACKSPACE)
-		update_argv(data, argv);
+		data = update_argv(data, argv, s);
 	data = get_column(data, argv, (s.ws_row - 2));
 	pos_tmp = handle_positions(pos_tmp, buffer, data, s);
 	if (check_column_size(data, s.ws_col))
