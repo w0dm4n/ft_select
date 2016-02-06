@@ -18,6 +18,7 @@ int		main(int argc, char **argv, char **env)
 	t_data			*data;
 
 	env = NULL;
+	g_argv = argv;
 	if (argc == 1)
 		return (0);
 	else

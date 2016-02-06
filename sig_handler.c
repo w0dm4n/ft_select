@@ -29,11 +29,14 @@ void		re_size_column(int signo)
 	data = NULL;
 	if (signo == SIGWINCH)
 	{
+		if (!g_argv)
+			return ;
 		if (!(data = alloc_memory(data, s)))
 			return ;
 		ioctl(0, TIOCGWINSZ, &s);
 		data = get_column(data, g_argv, (s.ws_row - 2));
-		data->pos = g_pos;
+		if (g_pos)
+			data->pos = g_pos;
 		ft_putstr(CLEAR_SCREEN);
 		if (check_column_size(data, s.ws_col))
 			print_columns(data, 0, 0, get_bigger(data));
