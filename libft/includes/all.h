@@ -77,4 +77,5 @@ void		read_all_char(char **argv, t_data *data, struct winsize s);
 int			get_ascii_value(char *value);
 void		sig_handler(void);
 char		**g_argv;
+int			**g_pos;
 #endif

@@ -28,6 +28,7 @@ int		main(int argc, char **argv, char **env)
 		ioctl(0, TIOCGWINSZ, &s);
 		data = check_size(argv, s);
 		g_argv = argv;
+		g_pos = data->pos;
 		read_all_char(argv, data, s);
 	}
 	return (0);

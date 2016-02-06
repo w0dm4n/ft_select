@@ -74,6 +74,7 @@ t_data	*handle_col(t_data *data, struct winsize s, char *buffer, char **argv)
 	else
 		ft_putstr("Windows size is too small !\n");
 	g_argv = argv;
+	g_pos = data->pos;
 	return (data);
 }
 
