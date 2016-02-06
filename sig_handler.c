@@ -23,8 +23,8 @@ void		exit_program(int signo)
 
 void		re_size_column(int signo)
 {
-	struct winsize s;
-	t_data	*data;
+	struct winsize	s;
+	t_data			*data;
 
 	data = NULL;
 	if (signo == SIGWINCH)

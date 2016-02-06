@@ -28,9 +28,12 @@ t_data		*get_column(t_data *data, char **argv, int max_row)
 			column++;
 			i_2 = 0;
 		}
-		data->column[column][i_2] = ft_strdup(argv[i]);
+		if (ft_strcmp(argv[i], "deleted"))
+		{
+			data->column[column][i_2] = ft_strdup(argv[i]);
+			i_2++;
+		}
 		i++;
-		i_2++;
 	}
 	data->column[column + 1] = NULL;
 	data->size = column;
