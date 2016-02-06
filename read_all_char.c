@@ -19,11 +19,11 @@ int		**handle_positions(int **pos, char *b, t_data *data, struct winsize s)
 	if (get_ascii_value(b) == ARROW_UP)
 		pos = go_up(pos, s, 0, 0);
 	if (get_ascii_value(b) == ARROW_RIGHT)
-		pos = go_right(pos, s, 0, data);
+		pos = go_r(pos, s, 0, data);
 	if (get_ascii_value(b) == ARROW_LEFT)
 		pos = go_left(pos, s, 0, 0);
 	if (get_ascii_value(b) == SPACE)
-		pos = set_selected(pos, s, 0, data);
+		pos = set_s(pos, s, 0, data);
 	return (pos);
 }
 
@@ -53,7 +53,7 @@ void	get_return_and_exit(t_data *data, struct winsize s)
 	exit(0);
 }
 
-t_data	*update_argv(t_data *data, char **argv, struct winsize s, int i)
+t_data	*upd_arg(t_data *data, char **argv, struct winsize s, int i)
 {
 	int i_2;
 
@@ -98,13 +98,7 @@ t_data	*handle_col(t_data *data, struct winsize s, char *buffer, char **argv)
 	data->pos = pos_tmp;
 	data = get_column(data, argv, (s.ws_row - 2));
 	pos_tmp = handle_positions(pos_tmp, buffer, data, s);
-	if (get_ascii_value(buffer) == DELETE ||
-		get_ascii_value(buffer) == BACKSPACE)
-	{
-		data = update_argv(data, argv, s, -1);
-		data->pos = go_up(data->pos, s, 0, 0);
-		data = get_column(data, argv, (s.ws_row - 2));
-	}
+	data = del_arg(buffer, data, argv, s);
 	if (check_column_size(data, s.ws_col))
 		print_columns(data, 0, 0, get_bigger(data));
 	else

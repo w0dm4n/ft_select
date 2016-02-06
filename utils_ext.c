@@ -21,3 +21,15 @@ void	exit_if_empty(int value)
 		exit(0);
 	}
 }
+
+t_data	*del_arg(char *b, t_data *d, char **argv, struct winsize s)
+{
+	if (get_ascii_value(b) == DELETE ||
+		get_ascii_value(b) == BACKSPACE)
+	{
+		d = upd_arg(d, argv, s, -1);
+		d->pos = go_up(d->pos, s, 0, 0);
+		d = get_column(d, argv, (s.ws_row - 2));
+	}
+	return (d);
+}

@@ -45,7 +45,7 @@ int		**if_is_selected_n_cursor(int **pos_tmp, int i, int i_2, t_data *data)
 	return (pos_tmp);
 }
 
-int		**set_selected(int **pos_tmp, struct winsize s, int i, t_data *data)
+int		**set_s(int **pos_tmp, struct winsize s, int i, t_data *data)
 {
 	int i_2;
 

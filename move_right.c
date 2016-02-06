@@ -30,7 +30,7 @@ static int		**change_value_s_n_c(int **pos, int i, int i_2, t_data *data)
 	return (pos);
 }
 
-int				**go_right(int **pos_tmp, struct winsize s, int i, t_data *data)
+int				**go_r(int **pos_tmp, struct winsize s, int i, t_data *data)
 {
 	int i_2;
 
