@@ -71,14 +71,9 @@ t_data	*update_argv(t_data *data, char **argv, struct winsize s)
 			if (data->pos[i][i_2] == CURSOR_ONLY ||
 				data->pos[i][i_2] == CURSOR_N_SELECTED)
 			{
-				ft_putstr("found : col : ");
-				ft_putnbr(i);
-				ft_putstr(" pos : ");
-				ft_putnbr(i_2);
-				ft_putstr("\n\n");
 				while (*argv)
 				{
-					if (i_2 >= (s.ws_row - 2))
+					if (i_3 >= (s.ws_row - 2))
 					{
 						column++;
 						i_3 = 0;
