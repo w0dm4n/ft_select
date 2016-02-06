@@ -28,7 +28,7 @@ void		print_space(char *str, int len_max)
 
 	space = (len_max - ft_strlen(str) + 1);
 	while (space-- > 0)
-		ft_putchar(' ');
+		ft_putchar_fd(' ', 2);
 }
 
 void		print_columns(t_data *data, int i, int i_2, int len_max)

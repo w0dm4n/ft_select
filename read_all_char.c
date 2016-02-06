@@ -41,8 +41,8 @@ void	get_return_and_exit(t_data *data, struct winsize s)
 			if (data->pos[i][i_2] == SELECTED_ONLY
 				|| data->pos[i][i_2] == CURSOR_N_SELECTED)
 			{
-				ft_putstr(data->column[i][i_2]);
-				ft_putstr(" ");
+				ft_putstr_fd(data->column[i][i_2], 1);
+				ft_putstr_fd(" ", 1);
 			}
 			i_2++;
 		}
@@ -53,51 +53,31 @@ void	get_return_and_exit(t_data *data, struct winsize s)
 	exit(0);
 }
 
-t_data	*update_argv(t_data *data, char **argv, struct winsize s)
+t_data	*update_argv(t_data *data, char **argv, struct winsize s, int i)
 {
-	int	i;
 	int i_2;
-	int i_3;
-	int column;
 
-	i = 0;
-	i_2 = 0;
-	i_3 = 0;
-	column = 0;
-	while (i < COLUMNS_MAX_SIZE)
+	i_2 = -1;
+	while (i++ < COLUMNS_MAX_SIZE)
 	{
-		while (i_2 < s.ws_row)
+		while (i_2++ < s.ws_row)
 		{
 			if (data->pos[i][i_2] == CURSOR_ONLY ||
 				data->pos[i][i_2] == CURSOR_N_SELECTED)
 			{
 				while (*argv)
 				{
-					if (i_3 >= (s.ws_row - 2))
+					if (!ft_strcmp(data->column[i][i_2], *argv))
 					{
-						column++;
-						i_3 = 0;
-					}
-					if (data->pos[column][i_3] == CURSOR_ONLY ||
-						data->pos[column][i_3] == CURSOR_N_SELECTED)
-					{
-						argv++;
-						ft_putstr("bjr");
-						ft_putstr("\n\n");
 						*argv = ft_strdup("deleted");
-						data->pos[i][i_2] = 1;
-						data->pos[i][i_2 - 1] = CURSOR_ONLY;
 						break ;
 					}
 					argv++;
-					i_3++;
 				}
 				break ;
 			}
-			i_2++;
 		}
-		i_2 = 0;
-		i++;
+		i_2 = -1;
 	}
 	return (data);
 }
@@ -116,11 +96,15 @@ t_data	*handle_col(t_data *data, struct winsize s, char *buffer, char **argv)
 	ft_putstr(CLEAR_SCREEN);
 	data->size = size_tmp;
 	data->pos = pos_tmp;
-	if (get_ascii_value(buffer) == DELETE ||
-		get_ascii_value(buffer) == BACKSPACE)
-		data = update_argv(data, argv, s);
 	data = get_column(data, argv, (s.ws_row - 2));
 	pos_tmp = handle_positions(pos_tmp, buffer, data, s);
+	if (get_ascii_value(buffer) == DELETE ||
+		get_ascii_value(buffer) == BACKSPACE)
+	{
+		data = update_argv(data, argv, s, -1);
+		data->pos = go_up(data->pos, s, 0, 0);
+		data = get_column(data, argv, (s.ws_row - 2));
+	}
 	if (check_column_size(data, s.ws_col))
 		print_columns(data, 0, 0, get_bigger(data));
 	else

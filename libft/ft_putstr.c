@@ -6,7 +6,7 @@
 /*   By: frmarinh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:37:14 by frmarinh          #+#    #+#             */
-/*   Updated: 2015/11/27 04:35:36 by frmarinh         ###   ########.fr       */
+/*   Updated: 2016/02/06 05:20:33 by frmarinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putstr(char *str)
 	{
 		while (str[i])
 		{
-			ft_putchar(str[i]);
+			ft_putchar_fd(str[i], 2);
 			i++;
 		}
 	}
