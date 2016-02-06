@@ -73,6 +73,7 @@ t_data	*handle_col(t_data *data, struct winsize s, char *buffer, char **argv)
 		print_columns(data, 0, 0, get_bigger(data));
 	else
 		ft_putstr("Windows size is too small !\n");
+	g_argv = argv;
 	return (data);
 }
 

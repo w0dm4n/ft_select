@@ -76,5 +76,5 @@ int			**set_selected(int **pos_tmp, struct winsize s, int i, t_data *data);
 void		read_all_char(char **argv, t_data *data, struct winsize s);
 int			get_ascii_value(char *value);
 void		sig_handler(void);
-t_data		*g_data;
+char		**g_argv;
 #endif
