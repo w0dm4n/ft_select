@@ -86,12 +86,6 @@ void	read_all_char(char **argv, t_data *data, struct winsize s)
 	bjr.c_lflag &= ~ICANON;
 	bjr.c_lflag &= ~ECHO;
 	tcsetattr(STDIN_FILENO, TCSANOW, &bjr);
-	sig_handler();
-	if (g_resize_window == 1)
-	{
-		ft_putstr("RESIZE");
-		g_resize_window = 0;
-	}
 	read(0, buffer, 10);
 	if (get_ascii_value(buffer) == ESC)
 	{

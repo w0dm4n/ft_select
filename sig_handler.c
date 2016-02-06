@@ -24,7 +24,10 @@ void		exit_program(int signo)
 void		re_size_column(int signo)
 {
 	if (signo == SIGWINCH)
+	{
+		ft_putstr("signal");
 		g_resize_window = 1;
+	}
 }
 
 void		sig_handler(void)

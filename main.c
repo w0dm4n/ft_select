@@ -22,6 +22,7 @@ int		main(int argc, char **argv, char **env)
 		return (0);
 	else
 	{
+		sig_handler();
 		ft_putstr(COLOR_CYAN);
 		ft_putstr(HIDE_CURSOR);
 		ioctl(0, TIOCGWINSZ, &s);
