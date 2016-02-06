@@ -37,6 +37,12 @@ t_data		*get_column(t_data *data, char **argv, int max_row)
 	}
 	data->column[column + 1] = NULL;
 	data->size = column;
+	if (!i_2)
+	{
+		ft_putstr(SHOW_CURSOR);
+		ft_putstr(CLEAR_SCREEN);
+		exit(0);
+	}
 	return (data);
 }
 

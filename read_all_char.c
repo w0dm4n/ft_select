@@ -71,6 +71,11 @@ t_data	*update_argv(t_data *data, char **argv, struct winsize s)
 			if (data->pos[i][i_2] == CURSOR_ONLY ||
 				data->pos[i][i_2] == CURSOR_N_SELECTED)
 			{
+				ft_putstr("found : col : ");
+				ft_putnbr(i);
+				ft_putstr(" pos : ");
+				ft_putnbr(i_2);
+				ft_putstr("\n\n");
 				while (*argv)
 				{
 					if (i_2 >= (s.ws_row - 2))
@@ -81,14 +86,18 @@ t_data	*update_argv(t_data *data, char **argv, struct winsize s)
 					if (data->pos[column][i_3] == CURSOR_ONLY ||
 						data->pos[column][i_3] == CURSOR_N_SELECTED)
 					{
-						ft_putstr("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+						argv++;
+						ft_putstr("bjr");
+						ft_putstr("\n\n");
 						*argv = ft_strdup("deleted");
 						data->pos[i][i_2] = 1;
 						data->pos[i][i_2 - 1] = CURSOR_ONLY;
+						break ;
 					}
 					argv++;
 					i_3++;
 				}
+				break ;
 			}
 			i_2++;
 		}
