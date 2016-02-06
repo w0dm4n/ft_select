@@ -78,4 +78,5 @@ int			get_ascii_value(char *value);
 void		sig_handler(void);
 char		**g_argv;
 int			**g_pos;
+void		exit_if_empty(int value);
 #endif
